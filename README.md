@@ -10,5 +10,5 @@ Animals in the database (for now):
 ## Data Credits
 
 Powered by:
-    - [Stratonauts Dog API](https://dogapi.dog)
-    - [Cat Facts Ninja](https://documenter.getpostman.com/view/1946054/S11HvKSz)
+- [Stratonauts Dog API](https://dogapi.dog)
+- [Cat Facts Ninja](https://documenter.getpostman.com/view/1946054/S11HvKSz)
