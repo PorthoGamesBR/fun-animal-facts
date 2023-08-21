@@ -45,7 +45,8 @@ function onSubmit(e) {
     setFactText();
 }
   
-async function printData() {
-    let data = await dataFromAnimal('cat')
+// For API debugging
+async function printData(animalName) {
+    let data = await dataFromAnimal(animalName)
     console.log(data);
 }
