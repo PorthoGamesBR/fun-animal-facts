@@ -1,6 +1,12 @@
 const animalAPIs = {
-    cat:"https://catfact.ninja/fact?max_length=140",
-    dog:"https://dogapi.dog/api/v2/facts?limit=1"
+    cat:{
+        link:"https://catfact.ninja/fact?max_length=140",
+        readData: (d) => {return d['fact']}
+    },
+    dog:{
+        link: "https://dogapi.dog/api/v2/facts?limit=1",
+        readData: (d) => {return d["data"][0]["attributes"]["body"]}
+    } 
 
 }
 
@@ -14,14 +20,16 @@ async function fetchData(link){
 }
 
 async function dataFromAnimal(animalName){
-    const link = animalAPIs[animalName.toLowerCase()];
-    if (!link) {
+    const animalConnectionData = animalAPIs[animalName.toLowerCase()];
+    if (!animalConnectionData) {
         return "This animal isn't on our database, so it doesn't exist. Goodbye."
     } 
     else
     {
+        const link = animalConnectionData.link;
         const data = await fetchData(link);
-        return data['fact']; 
+        console.log(data)
+        return animalConnectionData.readData(data); 
     }
 }
 
