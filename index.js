@@ -25,16 +25,24 @@ async function dataFromAnimal(animalName){
     }
 }
 
+function changeElementText(id,text) {
+    const elm = document.getElementById(id);
+    elm.innerText = text;
+}
+
 function onSubmit(e) {
     e.preventDefault();
     const form = document.getElementById("animal-form");
     const formData = new FormData(form)
     // Get text inside input with id animal-name
     const animalName = formData.get('animalName');
-    // Get element with id animal-name-text
-    const nameText = ""
-    // Get element wit id animal-fact
-    const factText = ""
+    changeElementText("animal-name-text", animalName)
+    
+    async function setFactText() {
+        const fact = await dataFromAnimal(animalName)
+        changeElementText("animal-fact", fact)
+    }
+    setFactText();
 }
   
 async function printData() {
