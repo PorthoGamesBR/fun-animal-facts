@@ -1,7 +1,7 @@
-
-
 const animalAPIs = {
-    cat:"https://catfact.ninja/fact?max_length=140"
+    cat:"https://catfact.ninja/fact?max_length=140",
+    dog:"https://dogapi.dog/api/v2/facts?limit=1"
+
 }
 
 async function fetchData(link){
@@ -17,7 +17,7 @@ async function dataFromAnimal(animalName){
     const link = animalAPIs[animalName.toLowerCase()];
     if (!link) {
         return "This animal isn't on our database, so it doesn't exist. Goodbye."
-    }
+    } 
     else
     {
         const data = await fetchData(link);
@@ -39,6 +39,7 @@ function onSubmit(e) {
     changeElementText("animal-name-text", animalName)
     
     async function setFactText() {
+        changeElementText("animal-fact", "Loading...")
         const fact = await dataFromAnimal(animalName)
         changeElementText("animal-fact", fact)
     }
