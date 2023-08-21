@@ -11,8 +11,20 @@ async function fetchData(link){
     return data;
 }
 
+async function dataFromAnimal(animalName){
+    const link = animalAPIs[animalName.toLowerCase()];
+    if (!link) {
+        return "This animal isn't on our database, so it doesn't exist. Goodbye."
+    }
+    else
+    {
+        const data = await fetchData(link);
+        return data['fact']; 
+    }
+}
+ 
 async function printData() {
-    let data = await fetchData(animalAPIs['cat'])
+    let data = await dataFromAnimal('cat')
     console.log(data);
 }
 
